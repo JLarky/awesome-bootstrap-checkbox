@@ -2,8 +2,13 @@
 // Checkboxes
 // --------------------------------------------------
 
-
 $font-family-icon: 'FontAwesome' !default;
+$abc-radio-fill-color: #fff !default;
+$abc-radio-input-color: $input-color !default;
+$abc-checkbox-input-color: $input-color !default;
+
+$abc-radio-outer-radius: 17px !default;
+$abc-radio-inner-radius: 11px !default;
 
 @mixin checkbox-variant($parent, $color) {
   #{$parent} input[type="checkbox"]:checked + label,
@@ -13,7 +18,7 @@ $font-family-icon: 'FontAwesome' !default;
       border-color: $color;
     }
     &::after{
-      color: #fff;
+      color: $abc-radio-fill-color;
     }
   }
 }
@@ -53,7 +58,7 @@ $font-family-icon: 'FontAwesome' !default;
       padding-left: 3px;
       padding-top: 1px;
       font-size: 11px;
-      color: $input-color;
+      color: $abc-checkbox-input-color;
     }
   }
 
@@ -132,13 +137,13 @@ $font-family-icon: 'FontAwesome' !default;
       content: "";
       display: inline-block;
       position: absolute;
-      width: 17px;
-      height: 17px;
+      width: $abc-radio-outer-radius;
+      height: $abc-radio-outer-radius;
       left: 0;
       margin-left: -20px;
       border: 1px solid $input-border;
       border-radius: 50%;
-      background-color: #fff;
+      background-color: $abc-radio-fill-color;
       @include transition(border 0.15s ease-in-out);
     }
 
@@ -146,13 +151,13 @@ $font-family-icon: 'FontAwesome' !default;
       display: inline-block;
       position: absolute;
       content: " ";
-      width: 11px;
-      height: 11px;
-      left: 3px;
-      top: 3px;
+      width: $abc-radio-inner-radius;
+      height: $abc-radio-inner-radius;
+      left: ($abc-radio-outer-radius - $abc-radio-inner-radius)/2;
+      top: ($abc-radio-outer-radius - $abc-radio-inner-radius)/2;
       margin-left: -20px;
       border-radius: 50%;
-      background-color: $input-color;
+      background-color: $abc-radio-input-color;
       @include scale(0, 0);
 
       @include transition-transform(.1s cubic-bezier(.8,-0.33,.2,1.33));
